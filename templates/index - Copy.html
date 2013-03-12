@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p>EZAC Gliderlog - EZAC Axel</p>
+<p>Today is: (date - fixed)<br /> 
+  DDI is: (DDI name- dropdown or data entry)
+    <br />
+Startofficier is: (STOF, meerdere mogelijk)</p>
+<p>DATA ENTRY</p>
+<p>Flightnumber autoupdate</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<table width="90%%" border="1">
+  <tr>
+    <th scope="col">Number of flight <br/>
+      (autonumber)</th>
+    <th scope="col">Lier/Sleep/Zelf <br/>
+      (dropdwn)</th>
+    <th scope="col">Registratie <br/>
+      (dropdown - entry)</th>
+    <th scope="col">Gezagvoerder <br/>
+      (entry)</th>
+    <th scope="col">Passagier <br/>
+      (entry)</th>
+    <th scope="col">Starttijd <br/>
+      (auto-entry)</th>
+    <th scope="col">Landing <br/>
+      (auto-entry)</th>
+    <th scope="col">Duur <br/>
+      (auto)</th>
+    <th scope="col">Remarks <br/>
+      (entry)</th>
+    <th scope="col">Klik voor landing</th></tr>
+  <tr>
+  <form action="/gliderlog/" method="post">{% csrf_token %}
+    {{ form.as_ul }}
+	<td><input name="Flightnumber" type="text" id="Flightnumber" size="10" maxlength="10" /></td>
+	<td>automatisch</td>
+    <td>automatisch</td>
+    <td>automatisch</td>
+   </tr> 
+   <tr><td><input type="submit" value="Submit"></td></tr>
+   </form>
+</table>
+<p></p>
+<p>&nbsp;</p>
+</body>
+</html>

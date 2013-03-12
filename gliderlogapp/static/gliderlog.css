@@ -1,0 +1,29 @@
+html {
+font-family: Verdana;
+font-size: 13px;
+}
+
+table {
+border: 0px;
+padding: 0px;
+margin: 0px;
+}
+
+tr {
+border: 1px dashed grey;
+padding: 0px;
+margin: 0px;
+}
+
+td {
+border: 1px dashed grey;
+padding: 0px;
+margin: 0px;
+}
+
+th {
+color: red;
+border: 1px dashed grey;
+padding: 2px;
+margin: 0px;
+}

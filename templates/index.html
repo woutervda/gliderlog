@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gliderlog Registration</title>
+<link rel="stylesheet" href="{{ STATIC_URL }}gliderlog.css" type="text/css"/>
+</head>
+
+<body>
+<div align="left" valign="top">
+<p>EZAC Gliderlog - EZAC Axel</p>
+<p>Today is: <strong>{{ overview.now }}</strong><br /> 
+  DDI is: (DDI name- dropdown or data entry)
+    <br />
+Startofficier is: (STOF, meerdere mogelijk)</p>
+<table width="90%%" border="1" padding="0">
+  <tr>
+    <th scope="col">Flightnumber</th>
+    <th scope="col">Start method</th>
+    <th scope="col">Registration</th>
+    <th scope="col">Gezagvoerder</th>
+    <th scope="col">Passagier</th>
+    <th scope="col">Remarks</th>
+  <form action="/gliderlog/" method="post">{% csrf_token %}
+  </tr>
+        <td>{{ formset.flightnumber }}</td>
+		<td>{{ formset.start_method }}</td>
+		<td>{{ formset.glider_registration }}</td>
+		<td>{{ formset.captain }}</td>
+		<td>{{ formset.passenger }}</td>
+		<td>{{ formset.remarks }}</td>		
+  </tr>
+</table>
+<input type="submit" name="start" value="START">
+   </form>
+    </br>
+    </br>
+  {% for error in formset.flightnumber.errors %}
+  Gelieve een vluchtnummer in te geven<br/>
+  {% endfor %}
+  {% for error in formset.start_method.errors %}
+  Er is een probleem met de startmethode <br/>
+  {% endfor %}
+  {% for error in formset.glider_registration.errors %}
+  Gelieve een registratienummer in te voeren<br/>
+  {% endfor %}
+  {% for error in formset.captain.errors %}
+  Gelieve de naam van de gezagvoerder in te geven<br/>
+  {% endfor %}
+  {% for error in formset.passenger.errors %}
+  Gelieve de naam van de passagier in te geven<br/>
+  {% endfor %}
+  {% for erro in formset.remarks.errors %}
+  Er is een probleem met je opmerking<br/>
+  {% endfor %}
+<br/>
+  <p><strong>Vluchten vandaag:</strong></p>
+<table width="90%%" border="1">
+  <tr>
+    <th scope="col">Flightnumber</th>
+    <th scope="col">Start method</th>
+    <th scope="col">Registration</th>
+    <th scope="col">Gezagvoerder</th>
+    <th scope="col">Passagier</th>
+    <th scope="col">Starttijd</th>
+    <th scope="col">Landing</th>
+    <th scope="col">Duur</th>
+    <th scope="col">Remarks</th>
+    <th scope="col">Klik voor landing</th>
+  {% if overview %}
+    {% for item in overview %}
+  </tr>
+        <td>{{ forloop.revcounter }}</td>
+		<td>{{ item.start_method }}</td>
+		<td>{{ item.glider_registration }}</td>
+		<td>{{ item.captain }}</td>
+		<td>{{ item.passenger }}</td>
+		<td>{{ item.start_time }}</td>
+		<td>{{ item.landing_time }}</td>
+		<td>{{ item.length_auto }}</td>
+		<td>{{ item.remarks }}</td>	
+		<td>
+<form action="/gliderlog/" method="post">{% csrf_token %}
+<button name="land" value={{ item.id }} type=submit>LANDING</button>
+   </form>
+		</td>	
+    {% endfor %}
+  </tr>
+  <tr>
+  </tr> 
+{% else %}
+   <p><strong>Nog geen vluchten vandaag.</strong></p>
+{% endif %}
+</table>
+<p>{{totaltime}}</p>
+<p>&nbsp;</p>
+</div>
+</body>
+</html>
