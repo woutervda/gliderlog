@@ -15,6 +15,7 @@
 Startofficier is: (STOF, meerdere mogelijk)</p>
 <table width="90%%" border="1" padding="0">
   <tr>
+    <th scope="col">Flightnumber</th>
     <th scope="col">Start method</th>
     <th scope="col">Registration</th>
     <th scope="col">Gezagvoerder</th>
@@ -22,6 +23,7 @@ Startofficier is: (STOF, meerdere mogelijk)</p>
     <th scope="col">Remarks</th>
   <form action="/gliderlog/" method="post">{% csrf_token %}
   </tr>
+        <td>{{ formset.flightnumber }}</td>
 		<td>{{ formset.start_method }}</td>
 		<td>{{ formset.glider_registration }}</td>
 		<td>{{ formset.captain }}</td>

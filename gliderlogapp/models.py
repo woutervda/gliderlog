@@ -4,11 +4,11 @@ from django.forms import ModelForm
 import datetime
 
 class Registration(models.Model):
-	flightnumber = models.IntegerField()
+	flightnumber = models.IntegerField(null=True, blank=True)
 	start_method = models.CharField(max_length=200)
 	glider_registration = models.CharField(max_length=10)
 	captain = models.CharField(max_length=200)
-	passenger = models.CharField(max_length=200)
+	passenger = models.CharField(max_length=200,null=True, blank=True)
 	start_time = models.DateTimeField()
 	landing_time = models.DateTimeField(null=True, blank=True)
 	# length = models.IntegerField()
@@ -46,8 +46,8 @@ class EntryForm(forms.Form):
 		# model = Registration
 		
 class Officials(models.Model):
-	DDI_morning = models.CharField(max_length=200)
-	DDI_afternoon = models.CharField(max_length=200)
-	StartOfficer_morning = models.CharField(max_length=200)
-	StartOfficer_afternoon = models.CharField(max_length=200)
+	DDI_morning = models.CharField(max_length=200, null=True, blank=True)
+	DDI_afternoon = models.CharField(max_length=200, null=True, blank=True)
+	StartOfficer_morning = models.CharField(max_length=200, null=True, blank=True)
+	StartOfficer_afternoon = models.CharField(max_length=200, null=True, blank=True)
 	Date = models.DateTimeField()

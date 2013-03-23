@@ -12,8 +12,8 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'NAME': '//192.168.1.112/Share/Django/gliderlog/db/gliderlog.db',                      # Or path to database file if using sqlite3.
-        'NAME': '/Volumes/User HD/Users/wouter.vandenameele/Documents/Personal/Django/gliderlog/db/gliderlog.db',
+        'NAME': 'N:\Git\gliderlog\db\gliderlog.db',                      # Or path to database file if using sqlite3.
+        #'NAME': '/Volumes/User HD/Users/wouter.vandenameele/Documents/Personal/Django/gliderlog/db/gliderlog.db',
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -111,7 +111,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	'/Volumes/User HD/Users/wouter.vandenameele/Documents/Personal/Django/gliderlog/templates'
+	#'/Volumes/User HD/Users/wouter.vandenameele/Documents/Personal/Django/gliderlog/templates'
+	'N:/Git/gliderlog/templates'
 )
 
 INSTALLED_APPS = (
